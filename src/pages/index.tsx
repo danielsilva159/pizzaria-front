@@ -6,6 +6,7 @@ import styles from '../../styles/home.module.scss'
 import {Input} from '../components/ui/input'
 import {Button} from '../components/ui/button';
 import {AuthContext} from '../contexts/AuthContext';
+import {toast} from 'react-toastify'
 import Link from 'next/link'
 
 export default function Home(){
@@ -17,7 +18,8 @@ export default function Home(){
   async function handleLogin(event: FormEvent){
     event.preventDefault();
     if(email === '' || password === ''){
-      alert('Preencha os dados')
+      toast.info('Preencha todos os campos')
+      return;
     }
     setLoading(true);
     let data = {
